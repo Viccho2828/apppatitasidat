@@ -3,7 +3,7 @@ package pe.edu.idat.apppatitasidat.retrofit
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class PatitasCliente {
+object PatitasCliente {
 
     private fun buildRetrofit() = Retrofit.Builder()
         .baseUrl("http://app.juankuga.com/wspatitas/")
