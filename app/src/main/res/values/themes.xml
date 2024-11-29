@@ -3,6 +3,7 @@
     <style name="Base.Theme.Apppatitasidat" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
     </style>
 
     <style name="Theme.Apppatitasidat" parent="Base.Theme.Apppatitasidat" />
@@ -11,6 +12,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
 
     <style name="Theme.Apppatitasidat.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
