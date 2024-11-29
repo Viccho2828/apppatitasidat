@@ -21,7 +21,7 @@ interface PatitasServicio {
             Call<ResponseRegistro>
 
     @GET("mascotaperdida.php")
-    fun listarMascota()
+    fun listarMascota():Call<String>
 
     @POST("personavoluntaria.php")
     fun registrarVoluntario()
