@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object PatitasCliente {
 
     private fun buildRetrofit() = Retrofit.Builder()
-        .baseUrl("http://app.juankuga.com/wspatitas/")
+        .baseUrl("https://app.juankuga.com/wspatitas/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
