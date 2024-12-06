@@ -40,6 +40,7 @@ class AuthRepository {
         call.enqueue(object : Callback<ResponseRegistro>{
             override fun onResponse(p0: Call<ResponseRegistro>, p1: Response<ResponseRegistro>) {
                 registroResponse.value = p1.body()
+                Log.i("INFO-API", p1.body().toString())
             }
             override fun onFailure(p0: Call<ResponseRegistro>, p1: Throwable) {
                 Log.e("ErrorAPIRegistro",
