@@ -35,6 +35,7 @@ class MascotaAdapter(
                 Glide.with(holder.itemView.context)
                     .load(urlimagen)
                     .into(binding.ivmascota)
+
             }
         }
     }
