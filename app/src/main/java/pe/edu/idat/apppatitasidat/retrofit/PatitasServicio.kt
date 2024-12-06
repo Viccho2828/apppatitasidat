@@ -2,7 +2,9 @@ package pe.edu.idat.apppatitasidat.retrofit
 
 import pe.edu.idat.apppatitasidat.retrofit.request.RequestLogin
 import pe.edu.idat.apppatitasidat.retrofit.request.RequestRegistro
+import pe.edu.idat.apppatitasidat.retrofit.request.RequestVoluntario
 import pe.edu.idat.apppatitasidat.retrofit.response.ResponseLogin
+import pe.edu.idat.apppatitasidat.retrofit.response.ResponseMascota
 import pe.edu.idat.apppatitasidat.retrofit.response.ResponseRegistro
 import retrofit2.Call
 import retrofit2.http.Body
@@ -21,8 +23,10 @@ interface PatitasServicio {
             Call<ResponseRegistro>
 
     @GET("mascotaperdida.php")
-    fun listarMascota():Call<String>
+    fun listarMascota():Call<List<ResponseMascota>>
 
     @POST("personavoluntaria.php")
-    fun registrarVoluntario()
+    fun registrarVoluntario(
+        @Body requestVoluntario: RequestVoluntario)
+    :Call<ResponseRegistro>
 }
