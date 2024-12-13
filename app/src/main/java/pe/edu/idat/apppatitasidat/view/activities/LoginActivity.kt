@@ -64,6 +64,7 @@ class LoginActivity : AppCompatActivity(),
             //Persistencia de datos con Room en SQLite
             startActivity(Intent(applicationContext,
                 HomeActivity::class.java))
+            finish()
         }else{
             AppMensaje.mensaje(binding.root,
                 responseLogin.mensaje,
