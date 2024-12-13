@@ -12,16 +12,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import pe.edu.idat.apppatitasidat.R
 import pe.edu.idat.apppatitasidat.databinding.ActivityLoginBinding
+import pe.edu.idat.apppatitasidat.db.entity.PersonaEntity
 import pe.edu.idat.apppatitasidat.retrofit.response.ResponseLogin
 import pe.edu.idat.apppatitasidat.utilitarios.AppMensaje
 import pe.edu.idat.apppatitasidat.utilitarios.TipoMensaje
 import pe.edu.idat.apppatitasidat.viewmodel.AuthViewModel
+import pe.edu.idat.apppatitasidat.viewmodel.PersonaViewModel
 
 class LoginActivity : AppCompatActivity(),
     View.OnClickListener {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var authViewModel: AuthViewModel
+    private lateinit var personaViewModel: PersonaViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +33,11 @@ class LoginActivity : AppCompatActivity(),
         setContentView(binding.root)
         authViewModel = ViewModelProvider(this)
             .get(AuthViewModel::class.java)
+        //Persistencia con Room en SQLite
+        personaViewModel = ViewModelProvider(this)
+            .get(PersonaViewModel::class.java)
+        personaViewModel.eliminartodo()
+        //Persistencia con Room en SQLite
         binding.btnlogin.setOnClickListener(this)
         binding.btnregistrar.setOnClickListener(this)
         authViewModel.responseLogin.observe(
@@ -42,6 +50,18 @@ class LoginActivity : AppCompatActivity(),
     private fun obtenerDatosLogin(
         responseLogin: ResponseLogin) {
         if(responseLogin.rpta){
+            //Persistencia de datos con Room en SQLite
+            val nuevaPersona = PersonaEntity(
+                responseLogin.idpersona.toInt(),
+                responseLogin.nombres,
+                responseLogin.apellidos,
+                responseLogin.email,
+                responseLogin.celular,
+                responseLogin.usuario,
+                responseLogin.password,
+                responseLogin.esvoluntario)
+            personaViewModel.insertar(nuevaPersona)
+            //Persistencia de datos con Room en SQLite
             startActivity(Intent(applicationContext,
                 HomeActivity::class.java))
         }else{
